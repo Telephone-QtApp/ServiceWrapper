@@ -4,10 +4,8 @@ project(srvinterface LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 set(COMMON_DIR ${CMAKE_CURRENT_SOURCE_DIR}/common)
 
-include_directories(${LIB_DIR})
 include_directories(${COMMON_DIR})
 
 add_executable(srvinterface main.cpp)

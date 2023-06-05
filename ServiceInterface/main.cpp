@@ -1,4 +1,4 @@
-#include "lib/signal.h"
+#include "common/signal.h"
 #include <iostream>
 
 class Service

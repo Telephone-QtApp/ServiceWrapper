@@ -1,5 +1,5 @@
-#ifndef __SIGNAL_H_
-#define __SIGNAL_H_
+#ifndef __SIGNAL_H
+#define __SIGNAL_H
 
 #include "../common/enums.h"
 #include <functional>

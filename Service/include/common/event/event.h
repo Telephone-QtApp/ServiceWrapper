@@ -53,11 +53,11 @@ public:
     void disconnect(const Id &id)
     {
         std::unique_lock<std::shared_mutex> lock(m_mutex);
-        for (std::size_t i = 0; i < callbacks.size(); ++i)
+        for (std::size_t i = 0u; i < callbacks.size(); ++i)
         {
-            if (callbacks[i].first == id)
+            if (callbacks.at(i).first == id)
             {
-                callbacks.erase(i);
+                callbacks.erase(callbacks.begin() + i);
             }
         }
     }
@@ -72,11 +72,12 @@ public:
      * @brief: Add new callback to callback list
      */
     template <typename Func>
-    void connect(Func &&callback)
+    Id connect(Func &&callback)
     {
         std::unique_lock<std::shared_mutex> lock(m_mutex);
         const auto id = createNewId();
         callbacks.emplace_back(id, std::forward<Func>(callback));
+        return id;
     }
 
     /**

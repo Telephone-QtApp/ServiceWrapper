@@ -1,6 +1,10 @@
 #include "common/callback.h"
 #include "common/logger/logger.h"
 
+void F() {
+    LOG("CCC SSSSSSSSSSSSs");
+}
+
 int main()
 {
     int n = 3;
@@ -16,11 +20,8 @@ int main()
     //     LOG_INFO("CCC SSSSSSSSSSSSs %d", n);
     // });
     // changeEvent.emit();
-    Callback callback;
-    callback.regCallbackFunc([&]()
-                             { LOG_INFO("CCC SSSSSSSSSSSSs %d", n); });
-    callback.regCallbackFunc([&]()
-                             { LOG_INFO("CCC RRRRRRRRRRRr %d", n); });
+    Callback<void()> callback;
+    callback.regCallbackFunc(F);
     callback.emit();
     return 0;
 }

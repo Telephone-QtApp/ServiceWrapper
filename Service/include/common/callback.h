@@ -5,26 +5,24 @@
 #include <mutex>
 #include "event/eventemitter.h"
 
+template <typename Func, typename... Args>
 class Callback : public EventEmitter<>
 {
 public:
-    template <typename CB>
-    uint32_t regCallbackFunc(CB &&cb)
+    uint32_t regCallbackFunc(Func &&fn)
     {
-        std::shared_lock<std::shared_mutex> lock(m_mutex);
-        return m_cbEvent.connect(std::forward<CB>(cb));
+        return m_cbEvent.connect(std::forward<Func>(fn));
     }
 
     void unRegCallbackFunc(uint32_t id)
     {
-        std::shared_lock<std::shared_mutex> lock(m_mutex);
         m_cbEvent.disconnect(id);
     }
 
-    void emit()
+    void emit(Args... args)
     {
-        std::shared_lock<std::shared_mutex> lock(m_mutex);
-        m_cbEvent.emit();
+        std::unique_lock<std::shared_mutex> lock(m_mutex);
+        m_cbEvent.emit(args...);
     }
 private:
     std::shared_mutex m_mutex;

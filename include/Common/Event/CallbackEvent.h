@@ -1,12 +1,12 @@
-#ifndef CALLBACK_H
-#define CALLBACK_H
+#ifndef CALLBACKEVENT_H
+#define CALLBACKEVENT_H
 
 #include <shared_mutex>
 #include <mutex>
-#include "event/eventemitter.h"
+#include "EventEmitter.h"
 
 template <typename Func, typename... Args>
-class Callback : public EventEmitter<>
+class CallbackEvent : public EventEmitter<>
 {
 public:
     uint32_t regCallbackFunc(Func &&fn)

@@ -6,11 +6,16 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(include)
+include_directories(include/Common)
+include_directories(include/SystemSetting)
 
-file(GLOB_RECURSE SOURCES
-"${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+set(SOURCES
+    src/main.cpp
+    src/ServiceEngine.cpp
+    src/SystemSetting/SystemSettingService.cpp
 )
 
 add_executable(service ${SOURCES})
+
 
 target_link_libraries(service pthread)

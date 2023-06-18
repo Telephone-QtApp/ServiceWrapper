@@ -1,9 +1,9 @@
 #ifndef EVENTEMITTER_H
 #define EVENTEMITTER_H
 
-#include "event.h"
-#include "common/enums.h"
-#include "common/std/unordered_map.h"
+#include "Event.h"
+#include "Enums.h"
+#include "Std/UnorderedMap.h"
 
 template <typename Key = Events, typename... Args>
 class EventEmitter

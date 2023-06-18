@@ -24,9 +24,10 @@ public:
         std::unique_lock<std::shared_mutex> lock(m_mutex);
         m_cbEvent.emit(args...);
     }
+
 private:
     std::shared_mutex m_mutex;
-    Event<>& m_cbEvent = *event(Events::Callback);
+    Event<> &m_cbEvent = *event(Events::Callback);
 };
 
 #endif

@@ -17,5 +17,4 @@ set(SOURCES
 
 add_executable(service ${SOURCES})
 
-
 target_link_libraries(service pthread)

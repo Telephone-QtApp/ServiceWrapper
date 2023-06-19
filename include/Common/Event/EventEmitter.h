@@ -42,12 +42,12 @@ public:
     }
 
     template <typename K>
-    void emit(K &&key, Args... args)
+    void emitEvent(K &&key, Args... args)
     {
         EventType *ptr = getEvent(std::forward<K>(key));
         if (ptr != nullptr)
         {
-            ptr->emit(args...);
+            ptr->emitEvent(args...);
         }
     }
 

@@ -1,18 +1,20 @@
 #ifndef SYSTEMSETTING_H
 #define SYSTEMSETTING_H
 
-#include "Event/CallbackEvent.h"
+#include "Event/Event.h"
 
 class SystemSettingService
 {
 public:
+    static SystemSettingService* instance();
+
     void connectService();
 
     void disconnectService();
 
-    CallbackEvent<void()> connectEvent;
+    // Event<> connectEvent;
 
-    CallbackEvent<void()> disconnectEvent;
+    // Event<> disconnectEvent;
 
 private:
     SystemSettingService();

@@ -8,6 +8,10 @@
 template <typename Func, typename... Args>
 class CallbackEvent : public EventEmitter<>
 {
+private:
+    std::shared_mutex m_mutex;
+    Event<> &m_cbEvent  = *event(Events::Callback);
+
 public:
     uint32_t regCallbackFunc(Func &&fn)
     {
@@ -19,15 +23,11 @@ public:
         m_cbEvent.disconnect(id);
     }
 
-    void emit(Args... args)
+    void emitEvent(Args... args)
     {
         std::unique_lock<std::shared_mutex> lock(m_mutex);
-        m_cbEvent.emit(args...);
+        m_cbEvent.emitEvent(args...);
     }
-
-private:
-    std::shared_mutex m_mutex;
-    Event<> &m_cbEvent = *event(Events::Callback);
 };
 
 #endif

@@ -91,8 +91,8 @@ public:
             event.second(args...);
         }
     }
-
-    void emit(Args... args)
+    
+    void emitEvent(Args... args)
     {
         if (!isEmpty())
         {

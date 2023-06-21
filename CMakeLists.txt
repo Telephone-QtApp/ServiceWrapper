@@ -11,10 +11,12 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../Executable/Lib
 include_directories(include)
 include_directories(include/Common)
 include_directories(include/SystemSetting)
+include_directories(include/SmartPhone)
 
 file(GLOB sources
     src/*.cpp
-    src/*/*.cpp    
+    src/*/*.cpp   
+    src/*/*/*.cpp 
 )
 
 add_library(service SHARED ${sources})

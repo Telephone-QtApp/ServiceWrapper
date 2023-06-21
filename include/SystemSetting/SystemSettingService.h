@@ -1,9 +1,11 @@
 #ifndef SYSTEMSETTING_H
 #define SYSTEMSETTING_H
 
-#include "Event/Event.h"
+#include "AbstractService.h"
 
-class SystemSettingService
+extern char const* SERVICE_NAME;
+
+class SystemSettingService : public AbstractService
 {
 public:
     static SystemSettingService* instance();
@@ -11,10 +13,6 @@ public:
     void connectService();
 
     void disconnectService();
-
-    // Event<> connectEvent;
-
-    // Event<> disconnectEvent;
 
 private:
     SystemSettingService();
